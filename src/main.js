@@ -1,5 +1,5 @@
 var electron = require("electron");
-var USIServer = require("./server/usi");
+var USIServer = require("./server/usi-server");
 
 var debug = require("debug")("main");
 var ipcMain = electron.ipcMain;
