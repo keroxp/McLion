@@ -24,7 +24,7 @@ USIServer.prototype.run = function () {
     var self = this;
     this.usi_process.stdout.on("data", function (rowData) {
         var res = new Buffer(rowData).toString("utf-8");
-        res.split("\n").forEach(function(e) {
+        res.split("\n").forEach(function (e) {
             debug("[response] : %s", e);
         });
         self.event.emit(EV_USI_RESPONSE, res);
@@ -47,7 +47,7 @@ USIServer.prototype.command = function (command) {
     var self = this;
     return new Promise(function (resolve, rejecct) {
         self.event.once(EV_USI_RESPONSE, resolve);
-        self.usi_process.stdin.write(command+"\n");
+        self.usi_process.stdin.write(command + "\n");
     });
 };
 
