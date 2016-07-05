@@ -1,24 +1,24 @@
-var electron = require("electron");
-var USIServer = require("./server/usi-server");
+const electron = require("electron");
+const USIServer = require("./server/usi-server");
 
-var debug = require("debug")("main");
-var ipcMain = electron.ipcMain;
+const debug = require("debug")("main");
+const ipcMain = electron.ipcMain;
 // Module to control application life.
-var app = electron.app;
+const app = electron.app;
 // Module to create native browser window.
-var BrowserWindow = electron.BrowserWindow;
+const BrowserWindow = electron.BrowserWindow;
 
-var usi = new USIServer(
+const usi = new USIServer(
     process.env.USI_ENGINE_PATH,
     process.env.USI_ENGINE_ARGS || []
 );
 
 // ipc with renderer
-ipcMain.on("usi:command", function (ev, arg) {
+ipcMain.on("usi:command", (ev, arg) => {
     debug("[command] : %s", arg);
-    usi.command(arg).then(function (res) {
+    usi.command(arg).then((res) => {
         ev.sender.send("usi:response", res);
-    }).catch(function (err) {
+    }).catch((err) => {
         ev.sender.send("usi:error", err);
     });
 });
@@ -27,7 +27,7 @@ usi.run();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-var mainWindow;
+let mainWindow;
 
 function createWindow() {
     // Create the browser window.
@@ -55,7 +55,7 @@ function createWindow() {
 app.on('ready', createWindow);
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
@@ -63,7 +63,7 @@ app.on('window-all-closed', function () {
     }
 });
 
-app.on('activate', function () {
+app.on('activate', () => {
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (mainWindow === null) {

@@ -2,21 +2,21 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-var electron = require("electron");
-var ipc = electron.ipcRenderer;
+const electron = require("electron");
+const ipc = electron.ipcRenderer;
 
-window.addEventListener("load",  function () {
-    var input = document.getElementById("input");
-    var button = document.getElementById("button");
-    var ta = document.getElementById("textarea");
-    button.addEventListener("click", function (e) {
-        var v = input.value;
+window.addEventListener("load", () => {
+    const input = document.getElementById("input");
+    const button = document.getElementById("button");
+    const ta = document.getElementById("textarea");
+    button.addEventListener("click", (e) => {
+        const v = input.value;
         console.log("command", v);
         ipc.send("usi:command", v);
         input.value = "";
     });
     console.log("command");
-    ipc.on("usi:response", function (ev, arg) {
+    ipc.on("usi:response", (ev, arg) => {
         console.log("usi:response");
         console.log(arg);
         ta.value = ta.value + "\n" + arg;
