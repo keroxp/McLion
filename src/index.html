@@ -3,26 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-<h1>Hello World!</h1>
-<!-- All of the Node.js APIs are available in this renderer process. -->
-We are using node
-<script>document.write(process.versions.node)</script>
-,
-Chromium
-<script>document.write(process.versions.chrome)</script>
-,
-and Electron
-<script>document.write(process.versions.electron)</script>
-.
-<input type="text" id="input"/>
-<button id="button">Send</button>
-<textarea id="textarea" rows="10" cols="30"></textarea>
+<div id="app"></div>
 </body>
-
 <script>
     // You can also require other files to run in this process
+    require("babel-register");
     require('./renderer.js');
 </script>
 </html>

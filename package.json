@@ -30,7 +30,22 @@
     "electron-prebuilt": "^1.2.0",
     "es6-promise": "^3.2.1",
     "eslint": "^3.0.0",
+    "json-kifu-format": "^1.1.0",
+    "lodash": "^4.13.1",
     "node-uuid": "^1.4.7",
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
     "should": "^9.0.2"
+  },
+  "babel": {
+    "sourceMaps": "inline",
+    "presets": [
+      "react"
+    ]
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.3.1"
   }
 }

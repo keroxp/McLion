@@ -1,0 +1,17 @@
+html, body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+#board {
+    position: relative;
+    width: 640px;
+    height: 640px;
+    max-width:640px;
+    max-height: 640px;
+    background: #D7BC51 url("../images/board-bg.jpg");
+}
+
+#boardCanvas {
+    position: absolute;
+}
